@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block login_check %}
+{% endblock login_check %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+
+<div class="container-fluid bg-dark text-white min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="text-center">
+        <h1 class="mt-4">Welcome to NexusWash.</h1>
+        <h2 class="mt-4">Your Car, Our Priority</h2>
+        <div class="d-flex mt-4 align-items-center justify-content-center">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg mr-2">Register</a>
+            <a href="{% url 'login' %}?next=/home" class="btn btn-secondary btn-lg">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

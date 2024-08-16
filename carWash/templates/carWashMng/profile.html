@@ -1,0 +1,48 @@
+<!-- profile.html -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block sidenav %}
+    <ul id="nav">
+        {% for item in item_list %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{ item.item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block content %}
+    <div class="container mt-4">
+        <!-- Profile Information -->
+        <div class="profile-header mb-4">
+            <h2 class="display-4">{{ user.username }}'s Profile</h2>
+        </div>
+
+        <div class="profile-info mb-4 p-3 bg-light rounded shadow-sm text-dark">
+            <p><strong>Bio:</strong> {{ profile.bio }}</p>
+            <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+            <a href="{% url 'profile_edit' %}" class="btn btn-primary">Edit Profile</a>
+        </div>
+
+        <!-- Bookings -->
+        <div class="bookings mt-4">
+            <h3 class="mb-3 text-dark">Your Bookings</h3>
+            <ul class="list-group">
+                {% for booking in bookings %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+                        {{ booking.service.name }} on {{ booking.booking_date }} at {{ booking.booking_time }}
+                        {% if booking.completed %}
+                            <span class="badge bg-success">Completed</span>
+                        {% else %}
+                            <span class="badge bg-danger">Pending</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block sidenav %}
+    <ul id="nav">
+        {% for item in item_list %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{ item.item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Our Services</h1>
+        <div class="row">
+            {% for service in services %}
+                <div class="col-md-4 mb-4">
+                    <div class="service-card card shadow-sm border-light">
+                        <img src="{{ service.picture.url }}" class="service-img card-img-top" alt="{{ service.name }}">
+                        <div class="card-body">
+                            <h2 class="service-title card-title">{{ service.name }}</h2>
+                            <p class="card-text"><strong>Price:</strong> ${{ service.price }}</p>
+                            <p class="card-text"><strong>Duration:</strong> {{ service.duration }}</p>
+                            <p class="card-text"><strong>Description:</strong></p>
+                            <p class="card-text">{{ service.description }}</p>
+                            <p class="card-text"><strong>Additional Features:</strong></p>
+                            <ul class="list-unstyled service-features">
+                                {% if service.additional_features %}
+                                    {% for feature in service.additional_features|split:", " %}
+                                        <li><i class="bi bi-check-circle text-dark"></i> {{ feature }}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>No additional features available.</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

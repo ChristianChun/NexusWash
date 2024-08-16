@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>NexusWash</title>
+    {% endblock title %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    {% block header %}
+    <header id="header" class="d-flex flex-column align-items-center py-3 w-100">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+            {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'view_cart' %}">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            {% endif %}
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="post" action="{% url 'logout' %}?next=/" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-primary nav-link">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}?next=/home">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% endblock header %}
+
+    <main class="flex-grow-1">
+        <div class="container">
+            <div class="row">
+                {% if user.is_authenticated and not request.path == '/' %}
+                <aside id="leftsidebar" class="col-md-3">
+                    <nav id="nav" class="nav flex-column">
+                        {% block sidenav %}
+                        {% endblock sidenav %}
+                    </nav>
+                </aside>
+                <section id="main" class="col-md-9">
+                {% else %}
+                <section id="main" class="col-md-12">
+                {% endif %}
+
+                    {% block content %}
+                    {% endblock content %}
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer" class="text-center py-3 mt-4">
+        2024 Summer Django Python Project
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/en.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+@charset "utf-8";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #343a40; /* Dark grey background */
+    color: #ffffff;
+}
+
+.jumbotron {
+    background-color: #f8f9fa; /* Light grey background for better contrast */
+    color: #343a40; /* Dark grey text for contrast */
+    padding: 2rem;
+    border-radius: 0.3rem;
+}
+
+.jumbotron h1 {
+    color: #343a40; /* Dark grey for heading */
+}
+
+.jumbotron p {
+    color: #343a40; /* Dark grey for paragraph text */
+}
+
+.jumbotron a {
+    color: #007bff; /* Bootstrap primary color for links */
+}
+
+.jumbotron a:hover {
+    color: #0056b3; /* Darker blue on hover for better visibility */
+}
+
+
+#header {
+    width: 100%;
+    text-align: center;
+}
+
+#wrapper {
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+    max-width: 800px;
+}
+
+#leftsidebar {
+     width: 180px;
+     height: 350px;
+}
+
+#nav li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1em;
+    list-style-type: none;
+    border-bottom: thin solid #5F5F5F;
+    color: #4C4C4C;
+    list-style-position: inside;
+}
+
+#main {
+     padding-left: 20px;
+     padding-right: 10px;
+}
+
+#footer {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    background-color: #FFFFFF;
+    border-top: thin solid #BBBBBB;
+    color: #969696;
+}
+
+/* Additional custom styles for better alignment and appearance */
+.container-fluid.bg-dark {
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+}
+
+.text-center p a.btn {
+    margin: 10px;
+}
+
+body.d-flex {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Ensure all cards have the same size */
+.card {
+    width: 100%; /* Ensure card takes full width of its container */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure card takes full height of its container */
+}
+
+.card-body {
+    flex: 1 0 auto; /* Allow the card body to expand to fill available space */
+    color: #000000; /* Ensure text color is black for visibility */
+    padding: 1rem;
+}
+
+.card-img-top {
+    max-height: 200px; /* Set a maximum height for images */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+}
+
+.card-title {
+    color: #000000; /* Ensure card title is also black */
+    margin-bottom: 0.1rem;
+}
+
+.card-text {
+    color: #000000; /* Ensure card text is also black */
+    margin-bottom: -1rem;
+}
+
+.btn-success {
+    background-color: #28a745; /* Bootstrap default green */
+    border-color: #28a745; /* Bootstrap default green */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #1e7e34; /* Darker green on hover */
+}
+
+/* Ensure that cards have equal heights */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    display: flex;
+    align-items: stretch; /* Stretch columns to have the same height */
+    margin-bottom: 1rem; /* Optional: Add space between rows of cards */
+}
+
+/* Scoped styles for the services page only */
+.container.my-5 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.service-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column; /* Ensure card contents stack vertically */
+    height: 100%; /* Ensure the card takes full height of its container */
+}
+
+.service-img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%; /* Ensure image fits its container width */
+}
+
+.service-title {
+    font-size: 1.5rem;
+    color: #343a40;
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    background-color: #ffffff;
+}
+
+.service-features {
+    padding-left: 0;
+    margin-top: 1rem; /* Add margin-top to separate features from description */
+}
+
+.service-features li {
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    margin-bottom: 1rem; /* Add margin-bottom to separate text paragraphs */
+}
+

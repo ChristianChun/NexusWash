@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% load form_tags %}
+
+{% block sidenav %}
+    <ul id="nav">
+        {% for item in item_list %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{ item.item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Book a Service</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="{{ form.booking_date.id_for_label }}">Date:</label>
+                {{ form.booking_date|add_class:"form-control" }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{ form.booking_time.id_for_label }}">Time:</label>
+                {{ form.booking_time|add_class:"form-control" }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.service.id_for_label }}">Service:</label>
+            {{ form.service|add_class:"form-control" }}
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="{{ form.customer_name.id_for_label }}">Customer Name:</label>
+                {{ form.customer_name|add_class:"form-control" }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{ form.customer_email.id_for_label }}">Customer Email:</label>
+                {{ form.customer_email|add_class:"form-control" }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="{{ form.additional_notes.id_for_label }}">Additional Notes:</label>
+            {{ form.additional_notes|add_class:"form-control" }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Include Flatpickr CSS and JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize Flatpickr for date selection
+        flatpickr("#{{ form.booking_date.id_for_label }}", {
+            dateFormat: "Y-m-d",
+            minDate: "today" // Disable past dates
+        });
+
+        // Initialize Flatpickr for time selection with 1-hour intervals
+        flatpickr("#{{ form.booking_time.id_for_label }}", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            minuteIncrement: 60, // Set interval to 60 minutes
+            minTime: "08:00",
+            maxTime: "20:00"
+        });
+    });
+</script>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sidenav %}
+    <ul id="nav">
+        {% for item in item_list %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{ item.item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid text-center" style="background-image: url('{% static 'car-wash-hero.jpg' %}'); background-size: cover; background-position: center; color: #ffffff;">
+        <div class="container py-5" style="background-color: rgba(0, 0, 0, 0.5);">
+            <h1 class="display-4 text-light">About Us</h1>
+            <p class="lead text-light">Learn why we are the best at what we do.</p>
+            <hr class="my-4" style="border-color: #ffffff;">
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Our Story</h2>
+                <p>At NexusWash, we started with a simple idea: provide the best car wash experience possible. With years of expertise, our team is dedicated to making sure your vehicle looks its best, every time.</p>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4">Our Values</h2>
+                <p>We believe in quality, convenience, and customer satisfaction. Our services are designed to meet your needs, whether you're looking for a quick wash or a complete detailing service.</p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-handshake fa-3x mb-3"></i>
+                <h3 class="mb-3">Commitment</h3>
+                <p>We are committed to delivering top-notch services and building long-lasting relationships with our customers.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-car fa-3x mb-3"></i>
+                <h3 class="mb-3">Quality</h3>
+                <p>Our attention to detail ensures that your vehicle receives the highest quality care every time.</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <h3 class="mb-3">Community</h3>
+                <p>We are proud to be a part of the community and strive to give back through various initiatives and partnerships.</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

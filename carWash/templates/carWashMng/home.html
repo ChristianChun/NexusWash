@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sidenav %}
+    <ul id="nav">
+        {% for item in item_list %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{ item.link }}">{{ item.item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock sidenav %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <div class="jumbotron jumbotron-fluid text-white">
+        <div class="container">
+            <h1 class="display-4 font-weight-bold">Welcome to NexusWash</h1>
+            <p class="lead">Your one-stop solution for all your car wash needs.</p>
+            <hr class="my-4 border-light">
+            {% if user.is_authenticated %}
+                <p class="font-weight-bold">Hello, {{ user.username }}! <a href="{% url 'profile' %}" class="text-light btn btn-primary">View your profile</a></p>
+            {% else %}
+                <p class="font-weight-bold">New here? <a href="{% url 'register' %}" class="btn btn-success btn-lg">Register</a> or <a href="{% url 'login' %}" class="btn btn-primary btn-lg">Login</a> to get started.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="container my-5">
+        <h2 class="text-center font-weight-bold">Why Choose NexusWash?</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 text-center">
+                <div class="p-4 bg-light rounded shadow-sm">
+                    <i class="fas fa-water fa-3x text-primary mb-3"></i>
+                    <h4 class="text-dark font-weight-bold">Eco-Friendly</h4>
+                    <p class="text-dark">We use environmentally safe products that protect your vehicle and the planet.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4 bg-light rounded shadow-sm">
+                    <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                    <h4 class=" text-dark font-weight-bold">Quality Service</h4>
+                    <p class="text-dark">Our experienced team ensures your car gets the best care possible, every time.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4 bg-light rounded shadow-sm">
+                    <i class="fas fa-clock fa-3x text-success mb-3"></i>
+                    <h4 class="text-dark font-weight-bold">Convenient Hours</h4>
+                    <p class="text-dark">We're open 7 days a week, with extended hours to fit your busy schedule.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map and Contact Information Section -->
+    <div class="container my-5">
+        <h2 class="text-center font-weight-bold">Find Us</h2>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="p-4 bg-light rounded shadow-sm">
+                    <h4 class="text-dark font-weight-bold">Our Location</h4>
+                    <p class="text-dark">1234 Clean Car Blvd, Carville, CA 90210</p>
+                    <p class="text-dark"><strong>Phone:</strong> (555) 123-4567</p>
+                    <p class="text-dark"><strong>Email:</strong> info@nexuswash.com</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Embedded Google Map -->
+                <div class="rounded shadow-sm overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509004!2d144.95373631531876!3d-37.81627997975151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727b0e1e2b1e9a!2sVictoria!5e0!3m2!1sen!2sau!4v1617250431597!5m2!1sen!2sau"
+                        width="100%"
+                        height="300"
+                        frameborder="0"
+                        style="border:0;"
+                        allowfullscreen=""
+                        aria-hidden="false"
+                        tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

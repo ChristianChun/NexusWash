@@ -30,7 +30,8 @@ NexusWash is a web-based car wash management system built using Django. It allow
 
 ### Prerequisites
 
-- Python 3.8+
+-
+ Python 3.8+
 - pip (Python package manager)
 - PostgreSQL (optional, for production)
 
@@ -38,7 +39,7 @@ NexusWash is a web-based car wash management system built using Django. It allow
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/yourusername/nexuswash.git
+    git clone https://github.com/ChristianChun/nexuswash.git
     cd nexuswash
     ```
 

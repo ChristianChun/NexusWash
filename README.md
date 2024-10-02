@@ -78,29 +78,7 @@ NexusWash is a web-based car wash management system built using Django. It allow
 
 7. **Access the Application**:
     - Open your web browser and go to `http://127.0.0.1:8000/`.
-
-## Project Structure
-nexuswash/
-├── carWashMng/ # Main application directory
-│ ├── migrations/ # Database migrations
-│ ├── templates/ # HTML templates
-│ │ ├── base.html # Base template
-│ │ ├── index.html # Home page template
-│ │ ├── services.html # Service booking page
-│ │ ├── ... # Other templates
-│ ├── static/ # Static files (CSS, JS, images)
-│ ├── views.py # View functions and classes
-│ ├── models.py # Database models
-│ ├── urls.py # URL routing
-│ ├── forms.py # Django forms
-│ └── ... # Other app-specific files
-├── nexuswash/ # Project configuration
-│ ├── settings.py # Project settings
-│ ├── urls.py # Project URL configuration
-│ ├── wsgi.py # WSGI configuration for deployment
-│ └── ...
-├── manage.py # Django management script
-└── README.md # Project documentation
+    - NOTE : go to `http://127.0.0.1:8000/admin` and go to `profiles`, and fill out form to access your profile , there is a bug where it doesnt create a profile  once you create a superuser so you need to do it manually , BUT you can register a new user , and that will create a profile automatically.
 
 
 ## Deployment
